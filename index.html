@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFinds - Sustainable Second-Hand Marketplace India</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="EcoFinds - Your sustainable second-hand marketplace for eco-friendly shopping in India">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1 class="logo">🌱 EcoFinds</h1>
+                <span class="subtitle">India's Sustainable Marketplace</span>
+            </div>
+            <div class="nav-menu">
+                <div class="nav-links">
+                    <a href="#" class="nav-link" data-page="home">Home</a>
+                    <a href="#" class="nav-link" data-page="browse">Browse</a>
+                    <a href="#" class="nav-link" data-page="carbon-calculator">Carbon Calculator</a>
+                    <a href="#" class="nav-link" data-page="impact-report">Impact Report</a>
+                    <a href="#" class="nav-link" data-page="eco-tips">Eco Tips</a>
+                    <div class="nav-user-menu" id="userMenu">
+                        <a href="#" class="nav-link" data-page="login" id="loginLink">Login</a>
+                        <div class="user-dropdown hidden" id="userDropdown">
+                            <button class="user-avatar" id="userAvatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Profile" id="userAvatarImg">
+                                <span id="userNameDisplay">User</span>
+                            </button>
+                            <div class="dropdown-menu" id="dropdownMenu">
+                                <a href="#" data-page="dashboard">Dashboard</a>
+                                <a href="#" data-page="my-listings">My Listings</a>
+                                <a href="#" data-page="wishlist">Wishlist</a>
+                                <a href="#" data-page="cart">Cart (<span id="cartCount">0</span>)</a>
+                                <a href="#" data-page="purchase-history">Purchase History</a>
+                                <button id="logoutBtn">Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <div class="page" id="page-home">
+            <div class="container">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="hero-content">
+                        <h1>Discover Sustainable Shopping in India</h1>
+                        <p>Join EcoFinds and reduce your environmental impact while finding amazing second-hand treasures. Shop sustainably, save money, and help build a greener India.</p>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-number">15,000+</span>
+                                <span class="stat-label">Items Saved from Waste</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">2,847kg</span>
+                                <span class="stat-label">CO₂ Saved</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">₹3.79Cr</span>
+                                <span class="stat-label">Money Saved</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Search and Filters -->
+                <section class="search-section">
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <input type="text" id="searchInput" placeholder="Search for sustainable products in India...">
+                            <button class="btn btn--primary" id="searchBtn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="filters">
+                            <select class="form-control" id="categoryFilter">
+                                <option value="">All Categories</option>
+                            </select>
+                            <select class="form-control" id="conditionFilter">
+                                <option value="">Any Condition</option>
+                                <option value="new">New</option>
+                                <option value="like_new">Like New</option>
+                                <option value="good">Good</option>
+                                <option value="fair">Fair</option>
+                                <option value="poor">Poor</option>
+                            </select>
+                            <select class="form-control" id="sortFilter">
+                                <option value="date">Newest First</option>
+                                <option value="price_low">Price: Low to High</option>
+                                <option value="price_high">Price: High to Low</option>
+                                <option value="rating">Highest Rated</option>
+                                <option value="sustainability">Most Sustainable</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Product Grid -->
+                <section class="products-section">
+                    <h2>Featured Sustainable Products</h2>
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Products will be loaded here instantly -->
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Browse Page -->
+        <div class="page hidden" id="page-browse">
+            <div class="container">
+                <h1>Browse All Products</h1>
+                <section class="search-section">
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <input type="text" id="browseSearchInput" placeholder="Search products...">
+                            <button class="btn btn--primary" id="browseSearchBtn">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div class="filters">
+                            <select class="form-control" id="browseCategoryFilter">
+                                <option value="">All Categories</option>
+                            </select>
+                            <select class="form-control" id="browseConditionFilter">
+                                <option value="">Any Condition</option>
+                                <option value="new">New</option>
+                                <option value="like_new">Like New</option>
+                                <option value="good">Good</option>
+                                <option value="fair">Fair</option>
+                                <option value="poor">Poor</option>
+                            </select>
+                            <select class="form-control" id="browseSortFilter">
+                                <option value="date">Newest First</option>
+                                <option value="price_low">Price: Low to High</option>
+                                <option value="price_high">Price: High to Low</option>
+                                <option value="rating">Highest Rated</option>
+                                <option value="sustainability">Most Sustainable</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+                <div class="products-grid" id="browseProductsGrid">
+                    <!-- Browse products will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Carbon Calculator Page -->
+        <div class="page hidden" id="page-carbon-calculator">
+            <div class="container">
+                <div class="calculator-header">
+                    <h1>Carbon Footprint Calculator</h1>
+                    <p>Calculate your environmental impact and savings by choosing second-hand products</p>
+                </div>
+                
+                <div class="calculator-container">
+                    <div class="calculator-form">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Product Category</h3>
+                                <select class="form-control" id="calcCategory">
+                                    <option value="">Select Category</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="furniture">Furniture</option>
+                                    <option value="clothing">Clothing</option>
+                                </select>
+                                
+                                <h3>Purchase Type</h3>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="purchaseType" value="new"> Buy New
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="purchaseType" value="used" checked> Buy Second-hand
+                                    </label>
+                                </div>
+                                
+                                <button class="btn btn--primary" id="calculateBtn">Calculate Impact</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-results">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Environmental Impact</h3>
+                                <div class="results-grid" id="calculatorResults">
+                                    <div class="result-item">
+                                        <span class="result-label">CO₂ Emissions:</span>
+                                        <span class="result-value" id="co2Result">-</span>
+                                    </div>
+                                    <div class="result-item">
+                                        <span class="result-label">Cost:</span>
+                                        <span class="result-value" id="costResult">-</span>
+                                    </div>
+                                    <div class="result-item savings">
+                                        <span class="result-label">Your Savings:</span>
+                                        <span class="result-value" id="savingsResult">-</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="impact-visualization" id="impactChart" style="position: relative; height: 300px;">
+                                    <canvas id="carbonChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impact Report Page -->
+        <div class="page hidden" id="page-impact-report">
+            <div class="container">
+                <div class="impact-header">
+                    <h1>Community Impact Report</h1>
+                    <p>See the collective environmental impact of our EcoFinds community</p>
+                </div>
+                
+                <div class="impact-stats-grid">
+                    <div class="card impact-stat">
+                        <div class="card__body">
+                            <div class="stat-icon">🌍</div>
+                            <div class="stat-number">2,847.3kg</div>
+                            <div class="stat-label">CO₂ Saved</div>
+                        </div>
+                    </div>
+                    <div class="card impact-stat">
+                        <div class="card__body">
+                            <div class="stat-icon">♻️</div>
+                            <div class="stat-number">1,234.7kg</div>
+                            <div class="stat-label">Waste Prevented</div>
+                        </div>
+                    </div>
+                    <div class="card impact-stat">
+                        <div class="card__body">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-number">₹3.79Cr</div>
+                            <div class="stat-label">Money Saved</div>
+                        </div>
+                    </div>
+                    <div class="card impact-stat">
+                        <div class="card__body">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-number">15,672</div>
+                            <div class="stat-label">Active Users</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="charts-grid">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Monthly CO₂ Savings</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="monthlyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Category Impact</h3>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="categoryChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eco Tips Page -->
+        <div class="page hidden" id="page-eco-tips">
+            <div class="container">
+                <div class="tips-header">
+                    <h1>Eco Tips Center</h1>
+                    <p>Learn how to live more sustainably and reduce your environmental impact</p>
+                </div>
+                
+                <div class="tips-grid" id="ecoTipsGrid">
+                    <!-- Eco tips will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div class="page hidden" id="page-login">
+            <div class="container">
+                <div class="auth-container">
+                    <div class="auth-form">
+                        <h2 id="authTitle">Welcome to EcoFinds</h2>
+                        <p id="authSubtitle">Join our sustainable community in India</p>
+                        
+                        <form id="authForm">
+                            <div class="form-group hidden" id="usernameGroup">
+                                <label class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Choose a username">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                            </div>
+                            <div class="form-group hidden" id="fullNameGroup">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" placeholder="Enter your full name">
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full-width" id="authSubmitBtn">
+                                Sign In
+                            </button>
+                        </form>
+                        
+                        <div class="auth-switch">
+                            <p id="authSwitchText">Don't have an account? <button type="button" id="authSwitchBtn" class="link-btn">Sign up</button></p>
+                        </div>
+                        
+                        <div class="demo-login">
+                            <p><small>For demo: Use email "demo@ecofinds.com" with any password</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div class="page hidden" id="page-dashboard">
+            <div class="container">
+                <div class="dashboard">
+                    <div class="dashboard-header">
+                        <h1>Your Sustainability Dashboard</h1>
+                        <p>Track your environmental impact and achievements in India</p>
+                    </div>
+                    
+                    <div class="dashboard-grid">
+                        <!-- Profile Card -->
+                        <div class="card dashboard-card">
+                            <div class="card__body">
+                                <h3>Profile</h3>
+                                <div class="profile-section">
+                                    <div class="profile-avatar">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Profile" id="dashboardAvatar">
+                                        <button class="btn btn--sm" onclick="document.getElementById('avatarInput').click()">Change</button>
+                                        <input type="file" id="avatarInput" style="display: none;" accept="image/*">
+                                    </div>
+                                    <div class="profile-info">
+                                        <div class="form-group">
+                                            <label class="form-label">Username</label>
+                                            <input type="text" class="form-control" id="profileUsername">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Full Name</label>
+                                            <input type="text" class="form-control" id="profileFullName">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="profileEmail">
+                                        </div>
+                                        <button class="btn btn--primary" id="updateProfileBtn">Update Profile</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stats Card -->
+                        <div class="card dashboard-card">
+                            <div class="card__body">
+                                <h3>Your Impact</h3>
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <span class="stat-value" id="userEcoPoints">0</span>
+                                        <span class="stat-label">EcoPoints</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value" id="userSustainabilityScore">0</span>
+                                        <span class="stat-label">Sustainability Score</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value">₹12,450</span>
+                                        <span class="stat-label">Money Saved</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value">25.6kg</span>
+                                        <span class="stat-label">CO₂ Saved</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Achievements Card -->
+                        <div class="card dashboard-card">
+                            <div class="card__body">
+                                <h3>Achievements</h3>
+                                <div class="achievements-grid" id="userAchievements">
+                                    <!-- Achievements will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add/Edit Product Page -->
+        <div class="page hidden" id="page-add-product">
+            <div class="container">
+                <div class="form-container">
+                    <h1 id="productFormTitle">Add New Product</h1>
+                    <form id="productForm" class="product-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Product Title</label>
+                                <input type="text" class="form-control" id="productTitle" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Category</label>
+                                <select class="form-control" id="productCategory" required>
+                                    <option value="">Select Category</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="productDescription" rows="4"></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Condition</label>
+                                <select class="form-control" id="productCondition" required>
+                                    <option value="">Select Condition</option>
+                                    <option value="new">New</option>
+                                    <option value="like_new">Like New</option>
+                                    <option value="good">Good</option>
+                                    <option value="fair">Fair</option>
+                                    <option value="poor">Poor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Price (₹)</label>
+                                <input type="number" class="form-control" id="productPrice" min="0" step="1" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Original Price (₹) - Optional</label>
+                            <input type="number" class="form-control" id="productOriginalPrice" min="0" step="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Product Images (up to 5)</label>
+                            <div class="image-upload-area" id="imageUploadArea">
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Click to upload images or drag and drop</p>
+                                </div>
+                                <input type="file" id="productImages" multiple accept="image/*" style="display: none;">
+                            </div>
+                            <div class="image-preview" id="imagePreview"></div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--secondary" id="cancelProductBtn">Cancel</button>
+                            <button type="submit" class="btn btn--primary" id="saveProductBtn">Save Product</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Listings Page -->
+        <div class="page hidden" id="page-my-listings">
+            <div class="container">
+                <div class="listings-header">
+                    <h1>My Listings</h1>
+                    <button class="btn btn--primary" data-page="add-product">Add New Product</button>
+                </div>
+                <div class="listings-grid" id="myListingsGrid">
+                    <!-- User's listings will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Shopping Cart Page -->
+        <div class="page hidden" id="page-cart">
+            <div class="container">
+                <h1>Shopping Cart</h1>
+                <div class="cart-container">
+                    <div class="cart-items" id="cartItems">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    <div class="cart-summary">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Order Summary</h3>
+                                <div class="summary-row">
+                                    <span>Subtotal:</span>
+                                    <span id="cartSubtotal">₹0</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Environmental Impact:</span>
+                                    <span class="text-success">-15.2kg CO₂</span>
+                                </div>
+                                <div class="summary-row total">
+                                    <strong>
+                                        <span>Total:</span>
+                                        <span id="cartTotal">₹0</span>
+                                    </strong>
+                                </div>
+                                <button class="btn btn--primary btn--full-width" id="checkoutBtn">
+                                    Proceed to Checkout
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wishlist Page -->
+        <div class="page hidden" id="page-wishlist">
+            <div class="container">
+                <h1>Your Wishlist</h1>
+                <div class="products-grid" id="wishlistGrid">
+                    <!-- Wishlist items will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Purchase History Page -->
+        <div class="page hidden" id="page-purchase-history">
+            <div class="container">
+                <h1>Purchase History</h1>
+                <div class="purchases-list" id="purchasesList">
+                    <!-- Purchase history will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail Modal -->
+        <div class="modal hidden" id="productModal">
+            <div class="modal-overlay" id="productModalOverlay"></div>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalProductTitle">Product Details</h2>
+                    <button class="modal-close" id="closeProductModal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="product-detail">
+                        <div class="product-images">
+                            <div class="main-image">
+                                <img src="https://images.unsplash.com/photo-1549497538-303791108f95?w=400&h=400&fit=crop" alt="Product" id="modalMainImage">
+                            </div>
+                            <div class="image-thumbnails" id="modalImageThumbnails">
+                                <!-- Thumbnails will be loaded here -->
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-header">
+                                <h1 id="modalProductTitleFull">Product Title</h1>
+                                <div class="product-price">
+                                    <span class="current-price" id="modalProductPrice">₹0</span>
+                                    <span class="original-price" id="modalProductOriginalPrice">₹0</span>
+                                </div>
+                            </div>
+                            
+                            <div class="product-badges" id="modalProductBadges">
+                                <!-- Badges will be loaded here -->
+                            </div>
+                            
+                            <div class="product-stats">
+                                <div class="stat">
+                                    <span class="stat-label">Condition:</span>
+                                    <span class="stat-value" id="modalProductCondition">Good</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Sustainability Score:</span>
+                                    <span class="stat-value sustainability-score" id="modalSustainabilityScore">85/100</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-label">Views:</span>
+                                    <span class="stat-value" id="modalProductViews">0</span>
+                                </div>
+                            </div>
+                            
+                            <div class="product-description">
+                                <h3>Description</h3>
+                                <p id="modalProductDescription">Product description goes here.</p>
+                            </div>
+                            
+                            <div class="product-seller">
+                                <h3>Seller Information</h3>
+                                <div class="seller-info">
+                                    <span id="modalSellerName">Seller</span>
+                                    <div class="seller-rating">
+                                        <span class="rating" id="modalSellerRating">⭐ 4.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="product-actions">
+                                <button class="btn btn--primary" id="addToCartBtn">Add to Cart</button>
+                                <button class="btn btn--secondary" id="addToWishlistBtn">
+                                    <i class="fas fa-heart"></i> Add to Wishlist
+                                </button>
+                                <button class="btn btn--outline" id="contactSellerBtn">Contact Seller</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🌱 EcoFinds</h3>
+                    <p>Making sustainable shopping accessible to everyone in India. Join the circular economy revolution.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" data-page="home">Home</a></li>
+                        <li><a href="#" data-page="browse">Browse Products</a></li>
+                        <li><a href="#" data-page="dashboard">Dashboard</a></li>
+                        <li><a href="#" data-page="carbon-calculator">Carbon Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Sustainability</h4>
+                    <ul>
+                        <li><a href="#" data-page="carbon-calculator">Carbon Calculator</a></li>
+                        <li><a href="#" data-page="impact-report">Impact Report</a></li>
+                        <li><a href="#" data-page="eco-tips">Eco Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoFinds India. Saving the planet, one purchase at a time. 🇮🇳</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="interactive-enhancements.js"></script>
+    <script src="theme-switcher.js"></script>
+</body>
+</html>
