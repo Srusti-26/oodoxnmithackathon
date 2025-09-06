@@ -7,6 +7,7 @@ The platform helps reduce waste, extend product lifecycles, and encourage a circ
 
 
 
+
 ## Features
 - User Authentication – Register & Login securely
 - User Dashboard – View & edit profile
@@ -18,6 +19,7 @@ The platform helps reduce waste, extend product lifecycles, and encourage a circ
 - Search by Keyword
 - Cart & Previous Purchases (prototype support)
 - Responsive Design – Works on both desktop & mobile
+
 
 
 ## Project Structure
@@ -33,6 +35,7 @@ eco-finds/
 
 
 
+
 ## Demo Products
 The prototype includes 8 sample products (with images from Unsplash):
 - Pre-owned Smartphone – ₹12,000  
@@ -43,6 +46,7 @@ The prototype includes 8 sample products (with images from Unsplash):
 - Yoga Equipment Bundle – ₹2,000  
 - Novels Collection – ₹900  
 - Used Laptop – ₹25,000  
+
 
 
 
@@ -83,6 +87,7 @@ The prototype includes 8 sample products (with images from Unsplash):
 
 
 
+
 ## Future Enhancements
 
 * Secure Backend (Node.js / Django / Flask)
@@ -96,4 +101,5 @@ The prototype includes 8 sample products (with images from Unsplash):
 Built for promoting sustainability and conscious consumption.
 
 ```
+
 
