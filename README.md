@@ -1,11 +1,11 @@
-
+# ODOO X NMIT HACKATHON
 
 # EcoFinds - Sustainable Second-Hand Marketplace
 
 EcoFinds is a web-based marketplace that promotes sustainable consumption by enabling people to buy and sell pre-owned goods.  
 The platform helps reduce waste, extend product lifecycles, and encourage a circular economy.
 
----
+
 
 ## Features
 - User Authentication – Register & Login securely
@@ -19,7 +19,6 @@ The platform helps reduce waste, extend product lifecycles, and encourage a circ
 - Cart & Previous Purchases (prototype support)
 - Responsive Design – Works on both desktop & mobile
 
----
 
 ## Project Structure
 ```
@@ -32,12 +31,12 @@ eco-finds/
 
 ````
 
----
+
 
 ## Demo Products
 The prototype includes 8 sample products (with images from Unsplash):
 - Pre-owned Smartphone – ₹12,000  
-- Modern Bookshelf – ₹3,500  
+- Photo album – ₹1000  
 - Vintage Leather Jacket – ₹2,800  
 - Trek Mountain Bike – ₹18,000  
 - Ceramic Decorative Vases – ₹1,500  
@@ -45,7 +44,7 @@ The prototype includes 8 sample products (with images from Unsplash):
 - Novels Collection – ₹900  
 - Used Laptop – ₹25,000  
 
----
+
 
 ## Installation & Setup
 
@@ -58,7 +57,7 @@ The prototype includes 8 sample products (with images from Unsplash):
    ```bash
    git clone https://github.com/your-username/ecofinds.git
    cd ecofinds
-````
+    ````
 
 2. Open the project folder and install dependencies (if any future setup is added):
 
@@ -74,7 +73,7 @@ The prototype includes 8 sample products (with images from Unsplash):
 
    Then open **[http://localhost:5173](http://localhost:5173)**
 
----
+
 
 ## Theme
 
@@ -82,7 +81,7 @@ The prototype includes 8 sample products (with images from Unsplash):
 * Clean, modern, interactive UI
 * Hover effects, smooth animations, and responsive grid layout
 
----
+
 
 ## Future Enhancements
 
@@ -92,7 +91,6 @@ The prototype includes 8 sample products (with images from Unsplash):
 * Chat between Buyers & Sellers
 * Advanced AI-based search & recommendation system
 
----
 
 
 Built for promoting sustainability and conscious consumption.
